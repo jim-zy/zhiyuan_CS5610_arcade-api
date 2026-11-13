@@ -1,0 +1,32 @@
+{
+  "name": "zhiyuan_cs5610_arcade-api",
+  "version": "1.0.0",
+  "description": "Hono + MongoDB api for arcade battleship",
+  "type": "module",
+  "main": "server.js",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "dev": "node --watch --env-file=.env server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jim-zy/zhiyuan_CS5610_arcade-api.git"
+  },
+  "keywords": [],
+  "author": "zhiyuan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jim-zy/zhiyuan_CS5610_arcade-api/issues"
+  },
+  "homepage": "https://github.com/jim-zy/zhiyuan_CS5610_arcade-api#readme",
+  "dependencies": {
+    "@hono/node-server": "^2.1.8",
+    "@peacestay/arcade-core": "^0.3.0",
+    "bcrypt": "^6.0.0",
+    "hono": "^4.13.18",
+    "mongodb": "^7.9.0"
+  }
+}
