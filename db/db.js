@@ -9,22 +9,23 @@ const client = new MongoClient(uri);
 await client.connect();
 
 export const db = client.db('arcade');
+
 export async function ensureIndexes() {
-  await db.collection('users').createIndexes([
-    {
-      key: { email: 1 },
-      unique: true
-    },
-    {
-      key: { username: 1 },
-      unique: true
-    }
-  ]);
+    await db.collection('users').createIndexes([
+        {
+            key: { email: 1 },
+            unique: true
+        },
+        {
+            key: { username: 1 },
+            unique: true
+        }
+        ]);
   
-  await db.collection('sessions').createIndexes([
-    {
-      key: { expiresAt: 1 },
-      expireAfterSeconds: 0
-    }
-  ]);
+    await db.collection('sessions').createIndexes([
+        {
+        key: { expiresAt: 1 },
+        expireAfterSeconds: 0
+        }
+    ]);
 }

@@ -1,13 +1,31 @@
 import { Hono } from 'hono';
 import { serve } from '@hono/node-server';
+import { logger } from 'hono/logger';
+import { HTTPException } from 'hono/http-exception';
 import { ensureIndexes } from './db/db.js';
+import authRoutes from './routes/auth.route.js';
 
 const app = new Hono();
 await ensureIndexes();
+app.use(logger());
 
 app.get('/api/health', (c) => {
-  return c.json({ ok: true }, 200);
+    return c.json({ ok: true }, 200);
 });
+
+app.route('/api/auth', authRoutes);
+
+app.onError((err, c) => {
+    if (err instanceof HTTPException) return c.json({ error: err.message || "Request failed" }, err.status);
+    console.error(err);
+    return c.json({ error: 'Internal Server Error' }, 500);
+});
+
+app.notFound((c) => {
+    return c.json({ error: 'Not Found' }, 404);
+});
+
+
 
 // Render sets PORT; 3000 locally
 serve(
