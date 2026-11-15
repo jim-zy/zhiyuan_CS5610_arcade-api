@@ -4,6 +4,7 @@ import { logger } from 'hono/logger';
 import { HTTPException } from 'hono/http-exception';
 import { ensureIndexes } from './db/db.js';
 import authRoutes from './routes/auth.route.js';
+import { gameRoutes } from './routes/games.route.js';
 
 const app = new Hono();
 await ensureIndexes();
@@ -14,6 +15,8 @@ app.get('/api/health', (c) => {
 });
 
 app.route('/api/auth', authRoutes);
+
+app.route('/api/games', gameRoutes);
 
 app.onError((err, c) => {
     if (err instanceof HTTPException) return c.json({ error: err.message || "Request failed" }, err.status);
