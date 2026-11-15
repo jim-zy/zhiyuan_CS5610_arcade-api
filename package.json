@@ -4,9 +4,6 @@
   "description": "Hono + MongoDB api for arcade battleship",
   "type": "module",
   "main": "server.js",
-  "engines": {
-    "node": "22.x"
-  },
   "scripts": {
     "dev": "node --watch --env-file=.env server.js",
     "start": "node server.js"
