@@ -38,6 +38,6 @@ serve(
     },
 
     (info) => {
-        console.log(`Server running on http://localhost:${info.port}`);
+        console.log(`Server listening on port ${info.port}`);
     }
 )

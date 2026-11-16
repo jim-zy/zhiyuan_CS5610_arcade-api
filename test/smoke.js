@@ -1,4 +1,4 @@
-const BASE = "http://localhost:3000";
+const BASE = process.env.API_URL ?? 'http://localhost:3000';
 
 async function api(method, path, token, body) {
     const headers = { 'Content-Type': 'application/json' };
